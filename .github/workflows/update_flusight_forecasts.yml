@@ -27,3 +27,8 @@ jobs:
       env:
         GITHUB_PAT: ${{secrets.GH_TOKEN}}
 
+    - name: Push generated files to GitHub
+      run: bash .github/workflows/push-flu-hosp-gh.sh
+      working-directory: ./flu-hosp-forecasts
+      env:
+        GITHUB_PAT: ${{secrets.GH_TOKEN}}
