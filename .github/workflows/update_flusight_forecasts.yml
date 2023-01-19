@@ -27,6 +27,12 @@ jobs:
       env:
         GITHUB_PAT: ${{secrets.GH_TOKEN}}
 
+    - name: Pull flusight files from GitHub
+      run: bash .github/workflows/pull-flusight-gh.sh
+      working-directory: ./
+      env:
+        GITHUB_PAT: ${{secrets.GH_TOKEN}}
+        
     - name: Push generated files to GitHub
       run: bash .github/workflows/push-flu-hosp-gh.sh
       working-directory: ./flu-hosp-forecasts
