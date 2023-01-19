@@ -7,7 +7,7 @@ setup_git() {
 
 clone_flusight_repo() {
   echo "Cloning repo..."
-  git clone 
+  git clone https://github.com/lshandross/Flusight-forecast-data.git
   echo "cloned flusight repo"
 }
 
