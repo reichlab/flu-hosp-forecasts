@@ -29,7 +29,6 @@ jobs:
 
     - name: Pull flusight files from GitHub
       run: bash .github/workflows/pull-flusight-gh.sh
-      working-directory: ./
       env:
         GITHUB_PAT: ${{secrets.GH_TOKEN}}
         
