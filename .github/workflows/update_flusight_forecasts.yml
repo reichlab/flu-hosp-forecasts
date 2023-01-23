@@ -32,6 +32,20 @@ jobs:
       env:
         GITHUB_PAT: ${{secrets.GH_TOKEN}}
         
+    - name: Clone Github Repo Action
+      uses: GuillaumeFalourd/clone-github-repo-action@v2
+      with:
+          owner: 'cdcepi'
+          repository: 'Flusight-forecast-data'
+      
+    - name: Access cloned repository content
+      run: |
+        echo "ROOT"
+        ls -la
+        echo "CLONED REPO"
+        cd Flusight-forecast-data
+        ls -la
+        
     - name: Push generated files to GitHub
       run: bash .github/workflows/push-flu-hosp-gh.sh
       working-directory: ./flu-hosp-forecasts
