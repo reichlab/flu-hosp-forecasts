@@ -27,11 +27,6 @@ jobs:
       env:
         GITHUB_PAT: ${{secrets.GH_TOKEN}}
 
-    - name: Pull flusight files from GitHub
-      run: bash .github/workflows/pull-flusight-gh.sh
-      env:
-        GITHUB_PAT: ${{secrets.GH_TOKEN}}
-        
     - name: Clone Github Repo Action
       uses: GuillaumeFalourd/clone-github-repo-action@v2
       with:
