@@ -41,6 +41,13 @@ jobs:
         cd Flusight-forecast-data
         ls -la
         
+    - name: convert and upload flusight forecasts
+      working-directory: ./flu-hosp-forecasts
+      run: Rscript code/convert-upload-forecast-files.R
+      env:
+        Z_USERNAME: ${{ secrets.Z_USERNAME }}
+        Z_PASSWORD: ${{ secrets.Z_PASSWORD }}
+        
     - name: Push generated files to GitHub
       run: bash .github/workflows/push-flu-hosp-gh.sh
       working-directory: ./flu-hosp-forecasts
