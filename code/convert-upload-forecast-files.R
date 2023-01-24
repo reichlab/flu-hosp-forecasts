@@ -22,7 +22,7 @@ for (j in 1:length(the_models$model_abbr)) {
   for (i in 1:length(forecast_paths)) {
     start_position <- str_locate(forecast_paths[i], "20")[1, 1]
     temp_date <- str_sub(forecast_paths[i], start = start_position, end = start_position + 9)
-    if (as.Date(temp_date, format="%Y-%m-%d") >=  floor_date(today()-7, unit="weeks", week_start=getOption("lubridate.week.start", 7))) {
+    if (as.Date(temp_date, format="%Y-%m-%d") >=  floor_date(today(), unit="weeks", week_start=getOption("lubridate.week.start", 7))) {
       forecast_data <- forecast_data_from_flusight_csv_file(forecast_paths[i])
 
       forecast_jobs[[i]] <- upload_forecast(
