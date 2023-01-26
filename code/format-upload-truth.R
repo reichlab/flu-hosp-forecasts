@@ -16,7 +16,6 @@ the_models <- models(zoltar_connection, project_url)
 
 # Format truth data
 source("code/format_truth.R")
-message(getwd())
 raw_truth <- read_csv("../Flusight-forecast-data/data-truth/truth-Incident Hospitalizations.csv")
 truth_date <- floor_date(today(), unit="weeks", week_start=getOption("lubridate.week.start", 1))
 truth_csv_path <- paste("data-truth/truth_inc-hosp_", truth_date, ".csv", sep="")
