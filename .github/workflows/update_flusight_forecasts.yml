@@ -2,7 +2,9 @@ name: Update Flusight forecasts
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 23 * * 3' # every Wednesday (3) at 6 PM ET (11 PM UTC)
+    - cron: '0 11 * * 2' # every Tuesday (2) at 6 AM ET (11 AM UTC)
+    - cron: '0 11 * * 3' # every Wednesday (3) at 6 AM ET (11 AM UTC)
+    - cron: '0 11 * * 6' # every Saturday (6) at 6 AM ET (11 AM UTC)
 
 jobs:
   run_script:
