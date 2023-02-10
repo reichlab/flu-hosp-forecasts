@@ -20,7 +20,7 @@ format_truth <- function(truth_file, date_column="date", unit_column="location",
   formatted_truth <- truth_file %>%
     rename("timezero" = all_of(date_column), "unit" = all_of(unit_column), "value" = all_of(value_column)) %>%
     select(timezero, unit, value) %>%
-    mutate(target = target_name, .before = value, timezero = floor_date(timezero + weeks(1), "week", 1))
+    mutate(target = target_name, .before = value, timezero = floor_date(timezero, "week", 1))
 
   if (!is.null(start_date)) formatted_truth <- filter(formatted_truth, timezero >= start_date)
 
