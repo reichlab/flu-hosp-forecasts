@@ -35,7 +35,7 @@ forecast_data_from_flusight_csv_file <- function(flusight_csv_path) {
 #'
 #' @examples
 forecast_data_from_flusight_data_frame <- function(flusight_data_frame) {
-  library(tidyverse)
+  library(dplyr)
   names(flusight_data_frame) <- sapply(names(flusight_data_frame), tolower) # make col names lowercase
 
   # validate flusight_data_frame

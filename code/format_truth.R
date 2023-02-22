@@ -14,7 +14,7 @@
 #'
 #' @examples
 format_truth <- function(truth_file, date_column="date", unit_column="location", value_column = "value", target_name=NULL, start_date=NULL, save_file=FALSE, save_file_path=NULL) {
-  library(tidyverse)
+  library(dplyr)
   library(lubridate)
 
   formatted_truth <- truth_file %>%
