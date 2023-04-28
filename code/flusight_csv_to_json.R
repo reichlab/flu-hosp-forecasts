@@ -47,7 +47,7 @@ forecast_data_from_flusight_data_frame <- function(flusight_data_frame) {
   col_names <- c("forecast_date", "target","target_end_date", "location", "type", "quantile", "value")
   if ((length(flusight_data_frame) == 0) || !all(names(flusight_data_frame) %in% col_names)) {
     stop("flusight_data_frame did not have required columns", call. = FALSE)
-  } else if (!all(names(flusight_data_frame) == col_names) && names(flusight_data_frame) %in% col_names) {
+  } else if (!identical(names(flusight_data_frame), col_names) && names(flusight_data_frame) %in% col_names) {
     flusight_data_frame <- flusight_data_frame %>%
       relocate(forecast_date, target, target_end_date, location, type, quantile, value)
   }
