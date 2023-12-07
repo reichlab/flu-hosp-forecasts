@@ -10,16 +10,23 @@ zoltar_authenticate(zoltar_connection, Sys.getenv("Z_USERNAME"), Sys.getenv("Z_P
 
 # Get projects and associated info
 the_projects <- projects(zoltar_connection)
-project_url <- the_projects[the_projects$name == "CDC Influenza Hospitalization Forecasts", "url"]
+project_url <- the_projects[the_projects$name == "CDC FluSight Forecast Hub", "url"]
 the_project_info <- project_info(zoltar_connection, project_url)
 the_models <- models(zoltar_connection, project_url)
 
 # Format truth data
 source("code/format_truth.R")
-raw_truth <- read_csv("../Flusight-forecast-data/data-truth/truth-Incident Hospitalizations.csv")
+raw_truth <- read_csv("../FluSight-forecast-hub/target-data/target-hospital-admissions.csv")
 truth_date <- today()
 truth_csv_path <- paste("data-truth/truth_inc-hosp_", truth_date, ".csv", sep="")
-formatted_truth <- format_truth(raw_truth, date_column="date", unit_column="location", value_column = "value", target_name="1 wk ahead inc flu hosp", start_date=as.Date("2021-12-13"), save_file=TRUE, save_file_path=truth_csv_path)
+  formatted_truth <- raw_truth |>
+    calculate_categories() |>
+    format_multiple_target_truth(
+      date_column="date", unit_column="location", 
+      target_variables=c("1 wk inc flu hosp", "1 wk flu hosp rate change"), 
+      target_columns=c("value", "weekly_rate"),
+      start_date, save_file=TRUE, save_file_path=truth_csv_path
+    )
 
 # upload truth data
 upload_truth(zoltar_connection, project_url, truth_csv_path)
