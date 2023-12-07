@@ -77,7 +77,7 @@ format_multiple_target_truth <- function(truth_file, date_column="date", unit_co
 #'
 #' @examples
 calculate_categories <- function(raw_truth) {
-  location_data <- readr::read_csv(file = "../Flusight-forecast-hub/auxiliary-data/locations.csv") |>
+  location_data <- readr::read_csv(file = "../FluSight-forecast-hub/auxiliary-data/locations.csv") |>
     dplyr::mutate(geo_value = tolower(abbreviation)) |>
     dplyr::select(location, count_rate1:count_rate2p5)
   

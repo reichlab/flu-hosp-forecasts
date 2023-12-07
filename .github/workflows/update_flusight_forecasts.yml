@@ -36,14 +36,14 @@ jobs:
       uses: GuillaumeFalourd/clone-github-repo-action@v2
       with:
         owner: 'cdcepi'
-        repository: 'Flusight-forecast-data'
+        repository: 'FluSight-forecast-hub'
       
     - name: Access cloned repository content
       run: |
         echo "ROOT"
         ls -la
         echo "CLONED REPO"
-        cd Flusight-forecast-data
+        cd FluSight-forecast-hub
         ls -la
         
     - name: convert and upload flusight forecasts

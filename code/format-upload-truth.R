@@ -25,7 +25,8 @@ truth_csv_path <- paste("data-truth/truth_inc-hosp_", truth_date, ".csv", sep=""
       date_column="date", unit_column="location", 
       target_variables=c("1 wk inc flu hosp", "1 wk flu hosp rate change"), 
       target_columns=c("value", "weekly_rate"),
-      start_date, save_file=TRUE, save_file_path=truth_csv_path
+      start_date = as.Date("2023-09-03"), 
+      save_file=TRUE, save_file_path=truth_csv_path
     )
 
 # upload truth data
