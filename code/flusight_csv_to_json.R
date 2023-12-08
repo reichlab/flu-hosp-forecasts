@@ -80,10 +80,10 @@ forecast_data_from_flusight_data_frame <- function(flusight_data_frame) {
       flusight_data_frame_idx <- group_row$.rows[[1]][group_rows_idx]
       flusight_row <- flusight_data_frame[flusight_data_frame_idx,]
       
-      if (group_row$type == POINT_PREDICTION_CLASS) {
+      if (group_row$output_type == POINT_PREDICTION_CLASS) {
         point_values <- append(point_values, as.numeric(flusight_row$value))
       } else if (group_row$output_type == QUANTILE_PREDICTION_CLASS) {
-        quantile_quant_and_value <- list(flusight_row$output_type_id, flusight_row$value)
+        quantile_quant_and_value <- list(as.numeric(flusight_row$output_type_id), as.numeric(flusight_row$value))
         quantile_quants <- append(quantile_quants, quantile_quant_and_value[[1]])
         quantile_values <- append(quantile_values, quantile_quant_and_value[[2]])
       } else {
