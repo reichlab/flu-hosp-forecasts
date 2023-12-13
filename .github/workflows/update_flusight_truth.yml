@@ -2,8 +2,8 @@ name: Update Flusight truth
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 5 * * 3' # every Wednesday (3) at 11 PM ET (4 AM UTC)
-    - cron: '0 5 * * 5' # every Friday (5) at 11 AM ET (4 AM UTC)
+    - cron: '0 4 * * 4' # every Wednesday (3) at 11 PM ET (4 AM UTC)
+    - cron: '0 4 * * 6' # every Friday (5) at 11 PM ET (4 AM UTC)
 
 jobs:
   run_script:
