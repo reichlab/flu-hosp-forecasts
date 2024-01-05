@@ -164,7 +164,7 @@ diff_weeks_season = as.numeric(diff_weeks_season)
 
 ```{r load data}
 #load files generated in query-scores-weekly-report.R
-setwd("~/github/flu-hosp-models-2021-2022/reports")
+setwd("~/github/flu-hosp-forecasts/reports")
 load(file = "raw_data.rda")
 load(file = "log_data.rda")
 load(file = "raw_scores.rda")
