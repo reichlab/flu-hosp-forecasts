@@ -786,6 +786,7 @@ We would expect a well-calibrated model to have a value of 95% in this plot.
 c_byweek_horizon <- raw_scores |>
   filter(reference_date>=first_eval_sat_season & model %in% season_models & location !=11) %>%
   add_coverage(ranges = c(95), by = c("model", "target_end_date","horizon")) |>
+  summarise_scores(by = c("model", "target_end_date","horizon")) |>
   mutate(c95=round(coverage_95,2))|>
   select(model,target_end_date,horizon,c95)
 
@@ -805,9 +806,9 @@ c_byweek_horizon0_all<- c_byweek_horizon0 %>%
   dplyr::full_join(miss_dates)
 
 by_week_c_0wk <- cplot_byweek_function(c_byweek_horizon0_all, var = "c95", var_name="95% PI Coverage", horizon_num = "0") +   geom_hline(yintercept = .95)
-by_week_c_0wk
 
-# ggplotly(by_week_c_0wk, tooltip = c("label", "labelx", "labely"))
+
+ggplotly(by_week_c_0wk, tooltip = c("label", "labelx", "labely"))
 
 ```
 
@@ -832,9 +833,9 @@ c_byweek_horizon1_all<- c_byweek_horizon1 %>%
   dplyr::full_join(miss_dates)
 
 by_week_c_1wk <- cplot_byweek_function(c_byweek_horizon1_all, var = "95% PI Coverage", var_name="95% PI Coverage", horizon_num = "1") +   geom_hline(yintercept = .95)
-by_week_c_1wk
 
-# ggplotly(by_week_c_1wk, tooltip = c("label", "labelx", "labely"))
+
+ggplotly(by_week_c_1wk, tooltip = c("label", "labelx", "labely"))
 
 ```
 
@@ -859,9 +860,8 @@ c_byweek_horizon2_all<- c_byweek_horizon2 %>%
   dplyr::full_join(miss_dates)
 
 by_week_c_2wk <- cplot_byweek_function(c_byweek_horizon2_all, var = "95% PI Coverage", var_name="95% PI Coverage", horizon_num = "2") +   geom_hline(yintercept = .95)
-by_week_c_2wk
 
-# ggplotly(by_week_c_2wk, tooltip = c("label", "labelx", "labely"))
+ggplotly(by_week_c_2wk, tooltip = c("label", "labelx", "labely"))
 
 ```
 
@@ -886,9 +886,8 @@ c_byweek_horizon3_all<- c_byweek_horizon3 %>%
   dplyr::full_join(miss_dates)
 
 by_week_c_3wk <- cplot_byweek_function(c_byweek_horizon3_all, var = "95% PI Coverage", var_name="95% PI Coverage", horizon_num = "3") +   geom_hline(yintercept = .95)
-by_week_c_3wk
 
-# ggplotly(by_week_c_3wk, tooltip = c("label", "labelx", "labely"))
+ggplotly(by_week_c_3wk, tooltip = c("label", "labelx", "labely"))
 
 ```
 
