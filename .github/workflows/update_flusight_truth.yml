@@ -1,6 +1,6 @@
 name: Update Flusight truth
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   run_script:
